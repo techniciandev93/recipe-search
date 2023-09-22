@@ -3,7 +3,7 @@ from telebot import types
 from recipe_search.bot_logic.loader import bot
 
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['start', 'Главная'])
 def bot_start(message: Message) -> None:
     """
     Команда /start. При вызове команды запускается бот и приветствуется пользователь.
@@ -11,12 +11,13 @@ def bot_start(message: Message) -> None:
     :return: None
     """
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton('/start')
-    item2 = types.KeyboardButton('/hello_world')
+    item1 = types.KeyboardButton('/Меню')
+    item2 = types.KeyboardButton('/Пописка')
 
     markup.add(item1, item2,)
 
     bot.reply_to(message, f"Привет, {message.from_user.full_name}!\n"
-                          f"\nЯ бот Домашний Шеф повар! Со мной ты можешь:\n"
-                          f"\nПока только поздароваться с миром нажав /hello_world\n"
-                          f"\nПриятного пользования!", reply_markup=markup)
+                          f"Это бот для кулинаров без воображения. "
+                          f"Он поможет тебе выбрать блюда на любой слючай. "
+                          f"Сервис платный, но ты можешь протестить, посмотрев 3 пробных блюда.\n"
+                          f"Приятного пользования!", reply_markup=markup)
