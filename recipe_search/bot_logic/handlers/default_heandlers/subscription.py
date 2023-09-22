@@ -3,12 +3,14 @@ from recipe_search.bot_logic.loader import bot
 from telebot import types
 
 
-@bot.message_handler(commands=['Подписка'])
+
+@bot.message_handler(func=lambda message: message.text == 'Меню подписки')
 def bot_subscription(message: Message) -> None:
+
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton('/Подписаться')
-    item2 = types.KeyboardButton('/Отписаться')
-    item3 = types.KeyboardButton('/Меню')
+    item1 = types.KeyboardButton('Подписаться')
+    item2 = types.KeyboardButton('Отписаться')
+    item3 = types.KeyboardButton('Меню')
     markup.add(item1, item2, item3,)
 
     bot.reply_to(message, 'Управление подпиской:\n'
