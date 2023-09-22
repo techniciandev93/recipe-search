@@ -12,7 +12,7 @@ def bot_start(message: Message) -> None:
     """
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item1 = types.KeyboardButton('/Меню')
-    item2 = types.KeyboardButton('/Пописка')
+    item2 = types.KeyboardButton('/Подписка')
 
     markup.add(item1, item2,)
 

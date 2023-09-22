@@ -3,7 +3,7 @@ from recipe_search.bot_logic.loader import bot
 from telebot import types
 
 
-@bot.message_handler(commands=['Пописка'])
+@bot.message_handler(commands=['Подписка'])
 def bot_subscription(message: Message) -> None:
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item1 = types.KeyboardButton('/Подписаться')
