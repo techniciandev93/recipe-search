@@ -2,3 +2,4 @@ Django==3.2.21
 Pillow==9.5.0
 pyTelegramBotAPI==4.13.0
 python-dotenv==0.21.1
+telebot==0.0.5
