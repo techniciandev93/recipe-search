@@ -12,7 +12,8 @@ def bot_subscription(message: Message) -> None:
     item2 = types.KeyboardButton('Показать блюда')
     markup.add(item1, item2, )
 
-    if subscribe(message.from_user.id):
+    if subscribe(message.chat.id):
         bot.reply_to(message, 'Вы уже подписаны!', reply_markup=markup)
     else:
         bot.reply_to(message, 'Вы успешно подписались!', reply_markup=markup)
+

@@ -24,11 +24,11 @@ class RecipeStep(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, verbose_name='Рецепт', related_name='recipe_steps')
 
     def __str__(self):
-        return f'Шаг для рецепта {self.recipe.recipe_name}'
+        return self.step_description
 
 
 class Ingredient(models.Model):
-    ingredient_name = models.CharField(max_length=255, verbose_name='Ингридиент')
+    ingredient_name = models.CharField(max_length=255, verbose_name='Ингрeдиент')
     amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Количество ингредиентов', null=True,
                                  blank=True)
     unit = models.CharField(max_length=10, verbose_name='Единица измерения', blank=True)
