@@ -1,7 +1,6 @@
-from telebot.types import Message
 from recipe_search.bot_logic.loader import bot
 from telebot import types
-from recipe_search.models import Recipe, Ingredient, RecipeStep
+from recipe_search.services import get_recipe, get_ingredients
 
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith('ingredients_for'))
@@ -11,9 +10,9 @@ def handle_callback(call):
     item1 = types.InlineKeyboardButton(text='Рецепт', callback_data=f"recipe_step_{recipe_id}")
     item2 = types.InlineKeyboardButton(text='Следующее блюдо', callback_data="new_recipe")
     markup.add(item1, item2)
-    recipe = Recipe.objects.get(id=recipe_id)
+    recipe = get_recipe(recipe_id)
     recipe_name = recipe.recipe_name
-    ingredients = Ingredient.objects.filter(recipe_step__in=RecipeStep.objects.filter(recipe=recipe))
+    ingredients = get_ingredients(recipe)
     ingredients_text = ''
     for n, ingredient in enumerate(ingredients):
         ingredients_text += f'{n+1}. {ingredient}: {ingredient.amount} {ingredient.unit}\n'

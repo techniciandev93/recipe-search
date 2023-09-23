@@ -3,7 +3,6 @@ from recipe_search.bot_logic.loader import bot
 from telebot import types
 
 
-
 @bot.message_handler(func=lambda message: message.text == 'Меню подписки')
 def bot_subscription(message: Message) -> None:
 
