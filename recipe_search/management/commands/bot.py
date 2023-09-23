@@ -1,13 +1,7 @@
 from django.core.management import BaseCommand
 from telebot.types import BotCommand
-from recipe_search.bot_logic.loader import bot
+from recipe_search.bot_logic.loader import bot, default_commands
 from recipe_search.bot_logic import handlers
-
-
-default_commands = (
-    ('start', "Запустить бота"),
-    ('hello_world', "Поздароваться с миром"),
-)
 
 
 class Command(BaseCommand):
