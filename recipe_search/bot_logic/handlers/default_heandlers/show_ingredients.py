@@ -12,8 +12,9 @@ def handle_callback(call):
     markup.add(item1, item2)
     recipe = get_recipe(recipe_id)
     recipe_name = recipe.recipe_name
-    ingredients = get_ingredients(recipe)
+    ingredients = get_ingredients(recipe.id)
     ingredients_text = ''
     for n, ingredient in enumerate(ingredients):
-        ingredients_text += f'{n+1}. {ingredient}: {ingredient.amount} {ingredient.unit}\n'
+        amount = '' if ingredient.amount is None else ingredient.amount
+        ingredients_text += f'{n+1}. {ingredient}: {amount} {ingredient.unit}\n'
     bot.reply_to(call.message, f'{recipe_name}\n{ingredients_text}', reply_markup=markup)

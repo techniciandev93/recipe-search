@@ -1,4 +1,4 @@
-from recipe_search.models import Recipe, Ingredient, RecipeStep
+from recipe_search.models import Recipe, Ingredient
 
 
 def get_recipe(recipe_id):
@@ -6,8 +6,8 @@ def get_recipe(recipe_id):
     return recipe
 
 
-def get_ingredients(recipe):
-    ingredients = Ingredient.objects.filter(recipe_step__in=RecipeStep.objects.filter(recipe=recipe))
+def get_ingredients(recipe_id):
+    ingredients = Ingredient.objects.filter(recipe_step__recipe__id=recipe_id)
     return ingredients
 
 
