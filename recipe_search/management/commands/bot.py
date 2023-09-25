@@ -9,4 +9,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         bot.set_my_commands([BotCommand(*command) for command in default_commands])
-        bot.polling(none_stop=True)
+        bot.infinity_polling(skip_pending=True)
